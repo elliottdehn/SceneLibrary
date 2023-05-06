@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://FollowCamera/FollowCamera.gd" id="1_n5tat"]
+
+[node name="MainCamera" type="Node3D" node_paths=PackedStringArray("target")]
+script = ExtResource("1_n5tat")
+target = NodePath("../CameraTarget")
+
+[node name="Camera" type="Camera3D" parent="."]
+
+[node name="Ray" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 10)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpjvaa7vf0hvq"]
+
+[ext_resource type="PackedScene" uid="uid://ccxnrypv8v6vt" path="res://ThirdPersonCharacter/Level.tscn" id="1_q10hm"]
+[ext_resource type="PackedScene" uid="uid://buwcjwcsie71b" path="res://ThirdPersonCharacter/ThirdPersonCharacter.tscn" id="2_5ijq7"]
+[ext_resource type="PackedScene" path="res://FollowCamera/FollowCamera.tscn" id="3_vn6m0"]
+
+[node name="ThirdPersonGameExample" type="Node3D"]
+
+[node name="Level" parent="." instance=ExtResource("1_q10hm")]
+
+[node name="ThirdPersonCharacter" parent="." node_paths=PackedStringArray("camera_system") instance=ExtResource("2_5ijq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12307, 0)
+camera_system = NodePath("../MainCamera")
+
+[node name="MainCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_vn6m0")]
+target = NodePath("../ThirdPersonCharacter/CameraTarget")
+
+[editable path="ThirdPersonCharacter"]

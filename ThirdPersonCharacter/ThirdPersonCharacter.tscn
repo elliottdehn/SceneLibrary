@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://buwcjwcsie71b"]
+
+[ext_resource type="Script" path="res://ThirdPersonCharacter/ThirdPersonCharacter.gd" id="1_ethr3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa45x"]
+albedo_color = Color(0.207843, 0.670588, 0.207843, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_44y48"]
+material = SubResource("StandardMaterial3D_aa45x")
+radius = 0.25
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yajp3"]
+height = 1.0
+
+[node name="ThirdPersonCharacter" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_ethr3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_44y48")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_yajp3")
+
+[node name="CameraTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
