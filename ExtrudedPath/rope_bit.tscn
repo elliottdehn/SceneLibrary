@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://21b4lsfbtpx2"]
+
+[ext_resource type="Script" path="res://scenes/rope_bit.gd" id="1_33tbk"]
+[ext_resource type="Texture2D" uid="uid://7fldfd1oqs27" path="res://2023_05_05_00m_Kleki.png" id="2_bujce"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igoh7"]
+albedo_texture = ExtResource("2_bujce")
+uv1_scale = Vector3(5, 10, 30)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k72fq"]
+properties/0/path = NodePath(".:o_path")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:o_pos")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath(".:t_path")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath(".:t_pos")
+properties/3/spawn = true
+properties/3/sync = true
+
+[node name="RopeBit" type="Node3D"]
+script = ExtResource("1_33tbk")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+polygon = PackedVector2Array(0, 0, 2.08165e-12, 0.035, 0.035, 0.035, 0.035, 2.08165e-12)
+mode = 2
+path_node = NodePath("")
+path_interval_type = 1
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 0.57
+path_joined = false
+material = SubResource("StandardMaterial3D_igoh7")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_k72fq")
